@@ -1,0 +1,200 @@
+%**********
+% Preamble
+%**********
+% Require setspace and geometry packages
+\RequirePackage{setspace,geometry}
+
+% Set spacing
+\doublespacing
+
+% Set page margins
+\geometry{left=1.05in,right=1.05in,top=1.05in,bottom=1.05in}
+
+% Define fields (\author and \title are defined in the report class)
+\def\department   #1{\gdef\@department   {#1}}
+\def\submitdate   #1{\gdef\@submitdate   {#1}}
+\def\copyrightyear#1{\gdef\@copyrightyear{#1}}
+\def\advisor      #1{\gdef\@advisor      {#1}}
+\def\secondmember #1{\gdef\@secondmember {#1}}
+\def\thirdmember  #1{\gdef\@thirdmember  {#1}}
+\def\fourthmember #1{\gdef\@fourthmember {#1}}
+\def\fifthmember  #1{\gdef\@fifthmember  {#1}}
+\def\sixthmember  #1{\gdef\@sixthmember  {#1}}
+
+% Set field default values
+\def\@title        {(title)}
+\def\@author       {(author)}
+\def\@department   {(department)}
+\def\@submitdate   {\ifcase\the\month\or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi \space \number\the\year}
+\def\@copyrightyear{\number\the\year}
+\def\@advisor      {(advisor)}
+\def\@secondmember {(committee member)}
+\def\@thirdmember  {(committee member)}
+\def\@fourthmember {(committee member)}
+\def\@fifthmember  {(committee member)}
+\def\@sixthmember  {(committee member)}
+
+% Define ifs
+\newif\iffourthmember
+\newif\iffifthmember
+\newif\ifsixthmember
+\newif\iffigurespage
+\newif\iftablespage
+
+% Set if defaults
+\fourthmembertrue
+\fifthmembertrue
+\sixthmembertrue
+\figurespagetrue
+\tablespagetrue
+
+% Define signature
+\long\def\signature#1{
+  \shortstack[l]{\vrule width 2.6in height 0.4pt\\#1}
+}
+
+%************
+% Title page
+%************
+\def\titlepage{
+  \thispagestyle{empty}
+  \begin{center}
+    \LARGE\@title\normalsize
+    \vfill
+    \rm by \\
+    \vfill
+    \@author \\
+    \vfill
+    Presented to the Graduate and Research Committee \\
+    of Lehigh University \\
+    in Candidacy for the Degree of \\
+    Doctor of Philosophy \\
+    in \\
+    \@department
+    \vfill
+    Lehigh University \\
+    \@submitdate \\
+  \end{center}
+  \newpage
+}
+
+%***********
+% Copyright
+%***********
+\def\copyrightpage{
+  \null
+  \vfill
+  \begin{center}
+    \copyright\ Copyright\ by \@author\ \@copyrightyear \\
+    All Rights Reserved
+  \end{center}
+  \newpage
+}
+
+%************
+% Signatures
+%************
+\def\signaturepage{
+  Approved and recommended for acceptance as a dissertation in partial fulfillment of the requirements for the degree of Doctor of Philosophy.
+  \vfill
+  \signature{Date}
+  \vfill
+  \signature{Dissertation Advisor}
+  \vfill
+  Committee Members:
+  \vfill
+  \signature{\@advisor, Committee Chair}
+  \vfill
+  \signature\@secondmember
+  \vfill
+  \signature\@thirdmember
+  \iffourthmember
+    \vfill
+    \signature\@fourthmember
+  \else
+    \vspace{0.5in}
+  \fi
+  \iffifthmember
+    \vfill
+    \signature\@fifthmember
+  \else
+    \vspace{0.5in}
+  \fi
+  \ifsixthmember
+    \vfill
+    \signature\@sixthmember
+  \else
+    \vspace{0.5in}
+  \fi
+  \newpage
+}
+
+%**************
+% Preface beg.
+%**************
+\def\beginpreface{
+  \pagenumbering{roman}
+  \pagestyle{plain}
+  \titlepage
+  \copyrightpage
+  \signaturepage
+}
+
+%**************
+% Preface sec.
+%**************
+\def\prefacesection#1#2{
+  \addcontentsline{toc}{chapter}{#1}
+  \chapter*{#1}
+  #2
+  \newpage
+}
+
+%*************
+% Preface end
+%*************
+\def\endpreface{
+  \tableofcontents
+  \newpage
+  \iftablespage
+    \addcontentsline{toc}{chapter}{List of Tables}
+    \listoftables
+    \newpage
+  \fi
+  \iffigurespage
+    \addcontentsline{toc}{chapter}{List of Figures}
+    \listoffigures
+    \newpage
+  \fi
+  \pagenumbering{arabic}
+  \pagestyle{headings}
+}
+
+%**********
+% Abstract
+%**********
+\def\abstract#1{
+  \chapter*{Abstract}
+  \addcontentsline{toc}{chapter}{Abstract}
+  #1
+  \newpage
+}
+
+%**************
+% Bibliography
+%**************
+\let\@ldthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{
+  \@ldthebibliography{#1}
+  \addcontentsline{toc}{chapter}{Bibliography}
+}
+
+%***********
+% Biography
+%***********
+\def\biography#1{
+  \chapter*{Biography}
+  #1
+  \addcontentsline{toc}{chapter}{Biography}
+  \newpage
+}

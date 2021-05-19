@@ -1,0 +1,229 @@
+%**********
+% Preamble
+%**********
+\documentclass[11pt]{report}
+
+% Set packages to be used (most should be included in your LaTeX installation; the rest are locally defined)
+\usepackage{amsmath,amsfonts,amsthm,commands,dissertation,graphicx}
+% amsmath      : Provides enhanced functionality for mathematical formulas
+%                ftp://ftp.ams.org/ams/doc/amsmath/amsldoc.pdf
+% amsfonts     : Provides additional mathematical fonts
+%                ftp://ftp.ams.org/pub/tex/doc/amsfonts/amsfndoc.pdf
+% amsthm       : Provides enhanced commands for theorem-like environments
+%                ftp://ftp.ams.org/ams/doc/amscls/amsthdoc.pdf
+% commands     : Provides short-cut commands (locally defined)
+% dissertation : Provides dissertation format (locally defined)
+% graphicx     : Provides enhanced support for graphics
+%                http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics#The_graphicx_package
+% Other packages you may want to consider:
+% algorithm, algorithmic, amssymb, hyperref, longtable, natbib, rotating
+
+%**********
+% Document
+%**********
+\begin{document}
+
+%************
+% Title page
+%************
+\title     {(title)}
+\author    {(author)}
+\department{Industrial and Systems Engineering}
+\submitdate{(month and year)}
+
+%***********
+% Copyright
+%***********
+\copyrightyear{(year)}
+
+%***********
+% Committee
+%***********
+% The dissertation.sty file must be edited for more than six committee members
+\advisor     {(advisor)}
+\secondmember{(committee member)}
+\thirdmember {(committee member)}
+\fourthmember{(committee member)}
+%\fourthmemberfalse % Uncomment if you do not have a fourth member
+\fifthmember {(committee member)}
+%\fifthmemberfalse % Uncomment if you do not have a fifth member
+\sixthmember {(committee member)}
+%\sixthmemberfalse % Uncomment if you do not have a sixth member
+
+%*************
+% Figure List
+%*************
+%\figurespagefalse % Uncomment if you do not have figures
+
+%************
+% Table List
+%************
+%\tablespagefalse % Uncomment if you do not have tables
+
+%*********
+% Preface
+%*********
+\beginpreface
+\prefacesection{Acknowledgements}{
+  List the people you wish to thank, or erase this preface section if you do not have any acknowledgements.  Other preface sections can be defined instead or in addition to this one.
+}
+\endpreface
+
+%**********
+% Abstract
+%**********
+\abstract{The abstract should be a maximum of 350 words.}
+
+%*********
+% Chapter
+%*********
+\chapter{Introduction}
+
+The dissertation is double-spaced by default, but sections can be single-spaced.  For example, see the \LaTeX\ file and observe how the following single-spaced paragraph is produced.
+
+\begin{singlespace}
+  ``To raise new questions, new possibilities, to regard old problems from a new angle, requires creative imagination and marks real advance in science.'' --- Albert Einstein
+  \end{singlespace}
+
+In a double-spaced document, single-spacing is common for long quotes such as the following Gettysburg Address given by President Abraham Lincoln on November 19, 1863.
+
+\begin{quote}
+  \begin{singlespace}
+  Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty and dedicated to the proposition that all men are created equal.
+  
+  Now we are engaged in a great civil war testing whether that nation, or any nation, so conceived and so dedicated can long endure.  We are met on a great battlefield of that war.  We have come to dedicate a portion of that field as a final resting place for those who here gave their lives that that nation might live.  It is altogether fitting and proper that we should do this.
+  
+  But, in a larger sense, we can not dedicate, we can not consecrate, we can not hallow this ground.  The brave men, living and dead, who struggled here have consecrated it far above our poor power to add or detract.  The world will little note, nor long remember, what we say here, but it can never forget what they did here.  It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced.  It is rather for us to be here dedicated to the great task remaining before us --- that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion --- that we here highly resolve that these dead shall not have died in vain --- that this nation, under God, shall have a new birth of freedom --- and that government of the people, by the people, for the people, shall not perish from the earth.
+  \end{singlespace}
+\end{quote}
+
+%*********
+% Chapter
+%*********
+\chapter{Chapter with equations and theorems}
+
+It is impossible to overstate the importance of presenting your work in a clear and concise manner.  Choose notation carefully and present your work logically.  Use in-line mathematical expressions such as $Ax=b$, but switch to display-mode for important expressions that may require a reference number such as
+\bequation\label{eq.linearsystem}
+  Ax=b.
+\eequation
+Use theorem environments such as the following to highlight important developments.
+\btheorem
+  Equation \eqref{eq.linearsystem} has zero, one, or an infinite number of solutions.
+\etheorem
+
+Notice in the \LaTeX\ file that shortcuts have been defined in this template for equations and theorems.  Normally, the tags for the equation environment looks like this (see the \LaTeX\ file):
+\begin{equation}\label{eq.linearsystem2}
+  Ax=b.
+\end{equation}
+Similarly, the tags for the theorem environment looks like this (see the \LaTeX\ file):
+\begin{theorem}
+  Equation \eqref{eq.linearsystem2} has zero, one, or an infinite number of solutions.
+\end{theorem}
+See the commands.sty file for other shortcuts that have been defined and can be used.  Also consider defining your own shortcuts for commands that you use often.
+
+%*********
+% Chapter
+%*********
+\chapter{Chapter with a citation}
+
+%*********
+% Section
+%*********
+\section{Farkas Lemma}
+
+The following lemma is due to Farkas \cite{Fark02}.
+
+\blemma
+  Let $A \in \mathbb{R}^{m \times n}$ and $b \in \mathbb{R}^m$.  Then, exactly one of the following is true.
+  \benumerate
+    \item There exists $x \in \mathbb{R}^n$ such that $Ax=b$ and $x \geq 0$.
+    \item There exists $y \in \mathbb{R}^m$ such that $A^Ty \geq 0$ and $b^Ty < 0$.
+  \eenumerate
+\elemma
+
+The lemma can be interpreted geometrically as the statement that either $b$ lies in the convex cone defined by $A$ or there exists a hyperplane separating $b$ from the cone.  It is an example of a theorem of the alternative --- that is, a theorem stating that of two systems, one or the other has a solution, but not both or none --- of which there are many.  It is used, amongst other things, in the proof of the Karush-Kuhn-Tucker theorem \cite{Karu39,KuhnTuck51}.
+
+%*********
+% Section
+%*********
+\section{Mathematician Joke}
+
+If a chapter continues onto a second page, then headers will appear across the top of the page.  Since so far this chapter is not long enough, it needs to be extended for you to see this.  This will be done by writing out the following joke about a mathematician.
+
+\bitemize
+  \item A physicist, a biologist and a mathematician are sitting in a caf\'e watching people entering and leaving the house on the other side of the street.  First they see two people entering the house.  Then time passes.  After a while they notice three people leaving the house.  The physicist says, ``The measurement wasn't accurate.''  The biologist says, ``They must have reproduced.'' The mathematician says, ``If one more person enters the house, then it will be empty.''
+\eitemize
+
+Ok, that was lame, but at least we're on to the next page.  Look, there's the header!
+
+%*********
+% Chapter
+%*********
+\chapter{Chapter with a table}
+
+Tables should appear in the main body of the dissertation.  They are often centered as Table~\ref{table.1984} is below.  Note that the number, caption, and page number of the table will automatically appear in the List of Tables in the preface of the dissertation.
+
+\btable[h]
+  \centering
+  \btabular{|r|l|}
+    \hline
+    7C0         & hexadecimal \\
+    \cline{2-2}
+    3700        & octal       \\
+    \cline{2-2}
+    11111000000 & binary      \\
+    \hline
+    \hline
+    1984        & decimal     \\
+    \hline
+  \etabular
+  \caption{The number 1984 written in various numerical bases}
+  \label{table.1984}
+\etable
+
+\noindent
+If the text following a table is supposed to be a continuation of the paragraph preceding the table, then you can use the command preceding this text in the \LaTeX\ document to ensure that the text is not indented as the beginning of this paragraph is not indented.
+
+%*********
+% Chapter
+%*********
+\chapter{Chapter with a figure}
+
+Figures should appear in the main body of the dissertation.  They are often centered as Figure~\ref{figure.logo} is below.  Note that the number, caption, and page number of the figure will automatically appear in the List of Figures in the preface of the dissertation.
+
+\bfigure[h]
+  \centering
+  \caption{Lehigh University logo}
+  \label{figure.logo}
+  \includegraphics[height=2in]{images/lehigh}
+\efigure
+
+Captions can be made to appear above or below a table or figure depending on the order of the commands written in the table or figure block.  Also, be aware that the placement of the \texttt{$\backslash$label\{...\}} command within the table and figure blocks above (see the \LaTeX\ document) does matter.  Be sure to place the \texttt{$\backslash$label\{...\}} command after the \texttt{$\backslash$caption\{...\}} command as is done above so that the numbering will be correct.
+
+%**************
+% Bibliography
+%**************
+\bibliographystyle{plain}
+\bibliography{references/references}
+
+%**********
+% Appendix
+%**********
+\appendix
+\chapter{First appendix chapter}\label{appendix.first}
+
+The first chapter after the \texttt{$\backslash$appendix} flag is labeled Appendix~\ref{appendix.first}.  This chapter, all subsequent chapters, and the \texttt{$\backslash$appendix} flag can be erased if you have no appendices.
+
+%**********
+% Appendix
+%**********
+\chapter{Second appendix chapter}\label{appendix.second}
+
+The second chapter after the \texttt{$\backslash$appendix} flag is labeled Appendix~\ref{appendix.second}.  This chapter can be erased if you have no Appendix~\ref{appendix.second}.
+
+%**********
+% Abstract
+%**********
+\biography{This section should include a short biography of the candidate including institutions attended, degrees (with dates) and honors, titles, or publications, teaching or professional experience, and other pertinent information.}
+
+\end{document}
