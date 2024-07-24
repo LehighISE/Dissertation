@@ -167,7 +167,13 @@
     \newpage
   \fi
   \pagenumbering{arabic}
-  \pagestyle{headings}
+  \fancyhf{}
+  \pagestyle{fancy}
+  \fancyhead{}
+  \fancyfoot{}
+  \renewcommand{\headrulewidth}{0.0pt}
+  \fancyfoot[C]{\thepage}  % Center page numbers on bottom of page.
+  %\pagestyle{headings}    % This was the original version.  
 }
 
 %**********
