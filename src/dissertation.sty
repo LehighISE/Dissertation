@@ -8,7 +8,7 @@
 \doublespacing
 
 % Set page margins
-\geometry{left=1.05in,right=1.05in,top=1.05in,bottom=1.05in}
+\geometry{left=1.50in,right=1.00in,top=1.00in,bottom=1.00in}
 
 % Define fields (\author and \title are defined in the report class)
 \def\department   #1{\gdef\@department   {#1}}
@@ -53,6 +53,9 @@
   \shortstack[l]{\vrule width 2.6in height 0.4pt\\#1}
 }
 
+% Change table of contents name
+\renewcommand{\contentsname}{Table of Contents}
+
 %************
 % Title page
 %************
@@ -85,9 +88,10 @@
   \null
   \vfill
   \begin{center}
-    \copyright\ Copyright\ by \@author\ \@copyrightyear \\
-    All Rights Reserved
+    \@copyrightyear\ \copyright\ Copyright \\
+    \@author
   \end{center}
+  \vfill
   \newpage
 }
 
