@@ -23,17 +23,17 @@
 \def\sixthmember  #1{\gdef\@sixthmember  {#1}}
 
 % Set field default values
-\def\@title        {(title)}
-\def\@author       {(author)}
-\def\@department   {(department)}
+\def\@title        {title}
+\def\@author       {author}
+\def\@department   {department}
 \def\@submitdate   {\ifcase\the\month\or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi \space \number\the\year}
 \def\@copyrightyear{\number\the\year}
-\def\@advisor      {(advisor)}
-\def\@secondmember {(committee member)}
-\def\@thirdmember  {(committee member)}
-\def\@fourthmember {(committee member)}
-\def\@fifthmember  {(committee member)}
-\def\@sixthmember  {(committee member)}
+\def\@advisor      {advisor}
+\def\@secondmember {committee member}
+\def\@thirdmember  {committee member}
+\def\@fourthmember {committee member}
+\def\@fifthmember  {committee member}
+\def\@sixthmember  {committee member}
 
 % Define ifs
 \newif\iffourthmember
@@ -99,60 +99,36 @@
 %************
 % Signatures
 %************
-
-% Signature line on left
-\def\leftsignature#1{%
-  \par\noindent
-  \parbox[t]{2.5in}{\hrule height 0.4pt\vspace{4pt}#1}%
-  \par}
-
-% Signature line pushed to the right half of the page
-\def\rightsignature#1{%
-  \par\noindent\hfill
-  \parbox[t]{3.25in}{\hrule height 0.4pt\vspace{4pt}#1}%
-  \par}
-
 \def\signaturepage{
-  \begin{center}
-    \textbf{\MakeUppercase{Dissertation Signature Sheet}}
-  \end{center}
-  \vspace{0.25in}
-
-  \noindent Approved and recommended for acceptance as a dissertation in partial fulfillment of the requirements for the degree of Doctor of Philosophy.
-  
-  \vspace{0.2in}
-  \noindent\@author\\ \@title
   Approved and recommended for acceptance as a dissertation in partial
   fulfillment of the requirements for the degree of Doctor of Philosophy.
   \vfill
-  \leftsignature{Defense Date}
+  \signature{Date}
   \vfill
-  \rightsignature{Dissertation Director}
+  \signature{Dissertation Advisor}
   \vfill
-  \leftsignature{Approved Date}
+  Committee Members:
   \vfill
-  \rightsignature{Committee Members:}   % see note below
+  \signature{\@advisor, Committee Chair}
   \vfill
-  \rightsignature{\@advisor, Committee Chair}
+  \signature\@secondmember
   \vfill
-  \rightsignature\@secondmember
-  \vfill
-  \rightsignature\@thirdmember
+  \signature\@thirdmember
   \iffourthmember
     \vfill
-    \rightsignature\@fourthmember
+    \signature\@fourthmember
   \else
     \vspace{0.5in}
   \fi
   \iffifthmember
     \vfill
-    \rightsignature\@fifthmember
+    \signature\@fifthmember
   \else
     \vspace{0.5in}
   \fi
   \ifsixthmember
     \vfill
-    \rightsignature\@sixthmember
+    \signature\@sixthmember
   \else
     \vspace{0.5in}
   \fi
