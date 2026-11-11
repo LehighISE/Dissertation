@@ -8,7 +8,8 @@
 \doublespacing
 
 % Set page margins
-\geometry{left=1.50in,right=1.00in,top=1.00in,bottom=1.00in}
+% USERS: If you define a non-blank header, add the argument "includehead" below.
+\geometry{left=1.50in,right=1.00in,top=1.00in,bottom=1.00in,includefoot}
 
 % Define fields (\author and \title are defined in the report class)
 \def\department   #1{\gdef\@department   {#1}}
@@ -88,7 +89,7 @@
   \null
   \vfill
   \begin{center}
-    \copyright\ \@copyrightyear\ Copyright \\
+    Copyright \copyright\ \@copyrightyear\\
     \@author
   \end{center}
   \vfill
@@ -99,7 +100,8 @@
 % Signatures
 %************
 \def\signaturepage{
-  Approved and recommended for acceptance as a dissertation in partial fulfillment of the requirements for the degree of Doctor of Philosophy.
+  Approved and recommended for acceptance as a dissertation in partial
+  fulfillment of the requirements for the degree of Doctor of Philosophy.
   \vfill
   \signature{Date}
   \vfill
@@ -148,9 +150,9 @@
 % Preface sec.
 %**************
 \def\prefacesection#1#2{
+  \addcontentsline{toc}{chapter}{#1}
   \chapter*{#1}
   #2
-  \addcontentsline{toc}{chapter}{#1}
   \newpage
 }
 
@@ -161,13 +163,13 @@
   \tableofcontents
   \newpage
   \iftablespage
-    \listoftables
     \addcontentsline{toc}{chapter}{List of Tables}
+    \listoftables
     \newpage
   \fi
   \iffigurespage
-    \listoffigures  
     \addcontentsline{toc}{chapter}{List of Figures}
+    \listoffigures  
     \newpage
   \fi
   \pagenumbering{arabic}
@@ -184,8 +186,8 @@
 % Abstract
 %**********
 \def\abstract#1{
-  \chapter*{Abstract}
   \addcontentsline{toc}{chapter}{Abstract}
+  \chapter*{Abstract}
   #1
   \newpage
 }
@@ -195,16 +197,16 @@
 %**************
 \let\@ldthebibliography\thebibliography
 \renewcommand{\thebibliography}[1]{
-  \@ldthebibliography{#1}
   \addcontentsline{toc}{chapter}{Bibliography}
+  \@ldthebibliography{#1}
 }
 
 %***********
 % Biography
 %***********
 \def\biography#1{
+  \addcontentsline{toc}{chapter}{Biography}
   \chapter*{Biography}
   #1
-  \addcontentsline{toc}{chapter}{Biography}
   \newpage
 }
