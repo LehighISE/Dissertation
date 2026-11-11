@@ -99,41 +99,66 @@
 %************
 % Signatures
 %************
+
+% Signature line on left
+\def\leftsignature#1{%
+  \par\noindent
+  \parbox[t]{2.5in}{\hrule height 0.4pt\vspace{4pt}#1}%
+  \par}
+
+% Signature line pushed to the right half of the page
+\def\rightsignature#1{%
+  \par\noindent\hfill
+  \parbox[t]{3.25in}{\hrule height 0.4pt\vspace{4pt}#1}%
+  \par}
+
 \def\signaturepage{
+  \begin{center}
+    \textbf{\MakeUppercase{Dissertation Signature Sheet}}
+  \end{center}
+  \vspace{0.25in}
+
+  \noindent Approved and recommended for acceptance as a dissertation in partial fulfillment of the requirements for the degree of Doctor of Philosophy.
+  
+  \vspace{0.2in}
+  \noindent\@author\\ \@title
   Approved and recommended for acceptance as a dissertation in partial
   fulfillment of the requirements for the degree of Doctor of Philosophy.
   \vfill
-  \signature{Date}
+  \leftsignature{Defense Date}
   \vfill
-  \signature{Dissertation Advisor}
+  \rightsignature{Dissertation Director}
   \vfill
-  Committee Members:
+  \leftsignature{Approved Date}
   \vfill
-  \signature{\@advisor, Committee Chair}
+  \rightsignature{Committee Members:}   % see note below
   \vfill
-  \signature\@secondmember
+  \rightsignature{\@advisor, Committee Chair}
   \vfill
-  \signature\@thirdmember
+  \rightsignature\@secondmember
+  \vfill
+  \rightsignature\@thirdmember
   \iffourthmember
     \vfill
-    \signature\@fourthmember
+    \rightsignature\@fourthmember
   \else
     \vspace{0.5in}
   \fi
   \iffifthmember
     \vfill
-    \signature\@fifthmember
+    \rightsignature\@fifthmember
   \else
     \vspace{0.5in}
   \fi
   \ifsixthmember
     \vfill
-    \signature\@sixthmember
+    \rightsignature\@sixthmember
   \else
     \vspace{0.5in}
   \fi
   \newpage
 }
+
 
 %**************
 % Preface beg.
